@@ -34,7 +34,7 @@
 
 
 <body>
-    <h1>Manideep builds a merger</h1>
+    <h1>Rajkumar builds a merger</h1>
     <br>
     <hr>
     <div class="mb-3">
@@ -54,6 +54,7 @@
 		<button onclick="makeNewDiv()">Add end</button>
         <button onclick="addFront()" >Add Front</button>
         <button onclick="remove()">Remove</button>
+        <button onclick="swap()">Swap</button>
     </div>
         	
 </body>
@@ -62,7 +63,7 @@
 		let element = document.createElement("div")
 		element.innerHTML = document.getElementById("text").value;
         element.className = "merger"
-		element.style.color = "orange"
+		element.style.color = "violet"
 
 		let container = document.getElementById('target')
 		container.appendChild(element)
@@ -80,15 +81,25 @@
         let element = document.createElement("div")
         element.innerHTML = document.getElementById("text").value;
         element.className = "merger"
-        element.style.color = "orange"
+        element.style.color = "violet"
 
         let parent = document.getElementsByClassName("merger")[0].parentNode
         let childElement = document.getElementsByClassName("merger")[0]
         parent.insertBefore(element,childElement)
     }
+    function swap()
+  {
+    let mergerItemss = document.getElementsByClassName("merger")
+    let mergerItemssLength = mergerItemss.length
+    let firstElement = mergerItemss[Math.round(Math.random()*(mergerItemssLength-1))]
+    let secondElement = mergerItemss[Math.round(Math.random()*(mergerItemssLength-1))]
 
-
+    let parentElement = firstElement.parentNode
     
-
-</script>
+    const siblingA = firstElement.nextSibling === secondElement ? firstElement : firstElement.nextSibling;
+    secondElement.parentNode.insertBefore(firstElement, secondElement);
+    parentElement.insertBefore(secondElement, siblingA);
+  }
+  
+  </script>
 </html>	
