@@ -2,7 +2,7 @@
 <html> <head> <style>
     .flex-container {
       display: flex;  flex-direction:row;
-      background-color: red;
+      background-color: rgb(50, 201, 235);
   }
 
 .flex-container > div {  /*div children of the flex container*/
@@ -14,7 +14,7 @@
 @media (max-width: 600px) { 
 	 .flex-container{
 		 flex-direction:column;
-		 background-color: green;
+		 background-color: rgb(70, 16, 136);
 	  }
 	}
 </style>
@@ -52,11 +52,10 @@
 	<p> Press the button to create an new element of type div and then add it to the container.</p>
     <div class=" container text-center">
 		<button onclick="makeNewDiv()">Add end</button>
-        
+        <button onclick="addFront()" >Add Front</button>
+        <button onclick="remove()">Remove</button>
     </div>
-        
-	
-	
+        	
 </body>
 <script>
 	function makeNewDiv(){
@@ -69,6 +68,25 @@
 		container.appendChild(element)
 		
 	}
+    function remove(){
+        let mergerItems = document.getElementsByClassName("merger")
+        const lengthOfmergerItems = mergerItems.length
+        if(lengthOfmergerItems>0)
+        {
+            mergerItems[Math.floor(lengthOfmergerItems/2)].remove()
+        }
+    }
+    function addFront(){
+        let element = document.createElement("div")
+        element.innerHTML = document.getElementById("text").value;
+        element.className = "merger"
+        element.style.color = "orange"
+
+        let parent = document.getElementsByClassName("merger")[0].parentNode
+        let childElement = document.getElementsByClassName("merger")[0]
+        parent.insertBefore(element,childElement)
+    }
+
 
     
 
